@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://analysis-system-tonus-backend.onrender.com/api"
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 export default api;

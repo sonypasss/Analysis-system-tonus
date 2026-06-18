@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { Table } from "antd";
 
 import MainLayout from "../layouts/MainLayout";
@@ -11,7 +11,7 @@ function Sales() {
     }, []);
 
     async function loadSales() {
-        const response = await axios.get("http://localhost:5000/api/sales");
+        const response = await api.get("/sales");
         setSales(response.data);
     }
 

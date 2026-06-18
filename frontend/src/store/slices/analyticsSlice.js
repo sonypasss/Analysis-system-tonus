@@ -4,10 +4,7 @@ import axios from "axios";
 
 export const fetchAnalytics = createAsyncThunk("analytics/fetch",
   async (params = {}) => {
-    const response = await axios.get(
-      "http://localhost:5000/api/analytics",
-      { params }
-    );
+    const response = await api.get("/analytics", { params });
     
     return response.data;
 

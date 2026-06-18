@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Card, Spin, Alert, DatePicker, Button } from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
-import axios from "axios";
+import api from "../api/api";
 
 import MainLayout from "../layouts/MainLayout";
 import { fetchAnalytics } from "../store/slices/analyticsSlice";
@@ -24,7 +24,7 @@ function Dashboard() {
   const [topClients, setTopClients] = useState([]);
 
   function downloadCSV() {
-    window.open("http://localhost:5000/api/export/csv");
+    window.open("https://analysis-system-tonus-backend.onrender.com/api/export/csv");
   }
 
   const { data, loading, error } = useSelector(state => state.analytics);
@@ -39,16 +39,14 @@ function Dashboard() {
     const formatNumber = (value) => Number(value).toLocaleString("ru-RU");
 
     async function loadChart(params = {}) {
-        const response = await axios.get("http://localhost:5000/api/analytics/revenue-by-date", { params });
+        await api.get("/analytics/revenue-by-date", { params })
 
         setChartData(response.data);
 
     }
 
     async function loadTopProducts() {
-      const response = await axios.get(
-        "http://localhost:5000/api/analytics/top-products"
-      );
+      const response = await api.get("/analytics/top-products")
 
       setTopProducts(
         response.data
@@ -57,7 +55,7 @@ function Dashboard() {
     }
 
     async function loadTopClients() {
-      const response = await axios.get("http://localhost:5000/api/analytics/top-clients");
+      const response = await api.get("/analytics/top-clients")
       
       setTopClients(
         response.data

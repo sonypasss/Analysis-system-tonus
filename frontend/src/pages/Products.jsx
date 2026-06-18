@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { Table, Input } from "antd";
 
 import MainLayout from "../layouts/MainLayout";
@@ -16,9 +16,9 @@ function Products() {
 
   async function loadProducts(value = "") {
 
-    const url = value ? `http://localhost:5000/api/products/search?name=${value}` : "http://localhost:5000/api/products";
+    const url = value ? `/products/search?name=${value}` : "/products";
 
-    const response = await axios.get(url);
+    const response = await api.get(url);
     
     setProducts(
       response.data

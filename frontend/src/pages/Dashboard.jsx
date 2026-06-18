@@ -39,10 +39,8 @@ function Dashboard() {
     const formatNumber = (value) => Number(value).toLocaleString("ru-RU");
 
     async function loadChart(params = {}) {
-        await api.get("/analytics/revenue-by-date", { params })
-
-        setChartData(response.data);
-
+      const response = await api.get("/analytics/revenue-by-date", { params });
+      setChartData(response.data);
     }
 
     async function loadTopProducts() {

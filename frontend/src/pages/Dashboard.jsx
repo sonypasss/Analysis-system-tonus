@@ -24,7 +24,7 @@ function Dashboard() {
   const [topClients, setTopClients] = useState([]);
 
   function downloadCSV() {
-    window.open("http://localhost:5000/api/export/csv");
+    window.open(`${import.meta.env.VITE_API_URL}/export/csv`)
   }
 
   const { data, loading, error } = useSelector(state => state.analytics);

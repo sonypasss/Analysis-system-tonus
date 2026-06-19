@@ -24,7 +24,7 @@ function Dashboard() {
   const [topClients, setTopClients] = useState([]);
 
   function downloadCSV() {
-    window.open("https://analysis-system-tonus-backend.onrender.com/api/export/csv");
+    window.open("http://localhost:5000/api/export/csv");
   }
 
   const { data, loading, error } = useSelector(state => state.analytics);

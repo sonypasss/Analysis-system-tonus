@@ -10,7 +10,14 @@ require("./src/models");
 const routes = require("./src/routes");
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://analysis-system-tonus.vercel.app"
+    ]
+  })
+);
 app.use(express.json());
 app.use("/api", routes);
 
